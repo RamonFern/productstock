@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +48,13 @@ public class ProdutoController {
 		List<Produto> list = produtoService.findAll();
 		List<ProdutoDTO> produtoDtoList = produtoMapper.toProdutoDTOList(list);
 		return ResponseEntity.ok(produtoDtoList);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<ProdutoDTO> findById(@PathVariable Long id) {
+		Produto produto = produtoService.findById(id);
+		ProdutoDTO dto = produtoMapper.toDTO(produto);
+		return ResponseEntity.ok(dto);
 	}
 
 }

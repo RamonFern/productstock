@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.productstock.sspr.exception.ProdutoNotFoundException;
 import com.productstock.sspr.models.Produto;
 import com.productstock.sspr.repositories.ProdutoRepository;
 
@@ -27,6 +28,11 @@ public class ProdutoService {
 	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 	public List<Produto> findAll() {
 		return produtoRepository.findAll();
+	}
+
+	@Transactional(readOnly = true)
+	public Produto findById(Long id) {
+		return produtoRepository.findById(id).orElseThrow(() -> new ProdutoNotFoundException(id));
 	}
 
 }
