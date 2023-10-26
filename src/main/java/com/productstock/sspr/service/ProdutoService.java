@@ -35,4 +35,11 @@ public class ProdutoService {
 		return produtoRepository.findById(id).orElseThrow(() -> new ProdutoNotFoundException(id));
 	}
 
+	@Transactional
+	public void deletar(Long id) {
+		findById(id);
+		produtoRepository.deleteById(id);
+		
+	}
+
 }
