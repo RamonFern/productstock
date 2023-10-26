@@ -42,4 +42,13 @@ public class ProdutoService {
 		
 	}
 
+	@Transactional
+	public Produto update(Long id, Produto produto) {
+		Produto produtoUpdate = findById(id);
+		produtoUpdate.setNome(produto.getNome());
+		produtoUpdate.setQuantidade(produto.getQuantidade());
+		produtoRepository.save(produtoUpdate);
+		return produtoUpdate;
+	}
+
 }
