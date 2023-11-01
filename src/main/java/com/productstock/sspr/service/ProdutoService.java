@@ -1,25 +1,24 @@
 package com.productstock.sspr.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.productstock.sspr.exception.ProdutoNotFoundException;
 import com.productstock.sspr.models.Produto;
 import com.productstock.sspr.repositories.ProdutoRepository;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 @Service
 public class ProdutoService {
 	
-	private ProdutoRepository produtoRepository;
-
 	@Autowired
-	public ProdutoService(ProdutoRepository produtoRepository) {
-		this.produtoRepository = produtoRepository;
-	}
+	private ProdutoRepository produtoRepository;
 
 	public Produto createProduto(Produto produto) {
 		return produtoRepository.save(produto);
@@ -32,7 +31,9 @@ public class ProdutoService {
 
 	@Transactional(readOnly = true)
 	public Produto findById(Long id) {
-		return produtoRepository.findById(id).orElseThrow(() -> new ProdutoNotFoundException(id));
+		//return produtoRepository.findById(id).orElseThrow(() -> new ProdutoNotFoundException(id));
+		Optional<Produto> produtoOp = produtoRepository.findById(id);
+		return produtoOp.orElse(null);
 	}
 
 	@Transactional
@@ -46,7 +47,9 @@ public class ProdutoService {
 	public Produto update(Long id, Produto produto) {
 		Produto produtoUpdate = findById(id);
 		produtoUpdate.setNome(produto.getNome());
-		produtoUpdate.setQuantidade(produto.getQuantidade());
+		produtoUpdate.setMarca(produto.getMarca());
+		produtoUpdate.setQntdEstoque(produto.getQntdEstoque());
+		produtoUpdate.setValor(produto.getValor());
 		produtoRepository.save(produtoUpdate);
 		return produtoUpdate;
 	}

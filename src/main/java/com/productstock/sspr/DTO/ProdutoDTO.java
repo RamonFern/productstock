@@ -1,5 +1,7 @@
 package com.productstock.sspr.DTO;
 
+import java.math.BigDecimal;
+
 import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -19,9 +21,15 @@ public class ProdutoDTO {
 	private Long id;
 
 	@NotEmpty
-	private String nome; 
+	private String nome;
 	
 	@NotEmpty
-	private Integer quantidade;
+	private String marca;
+	
+	@NotEmpty
+	private Integer qntdEstoque;
+	
+	@NotEmpty
+	private BigDecimal valor;
 
 }
