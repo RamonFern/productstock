@@ -25,6 +25,9 @@ public class VendaDTO {
 	private Long id;
 	
 	@NotBlank
+	private Long numeronota;
+	
+	@NotBlank
 	private Long idProduto;
 	
 	@NotBlank
@@ -43,6 +46,9 @@ public class VendaDTO {
 	
 	@Enumerated(EnumType.STRING)
 	private StatusVenda status;
+	
+	@NotBlank
+	private String formaPag;
 	
 	@NotBlank
 	private OffsetDateTime dataVenda;

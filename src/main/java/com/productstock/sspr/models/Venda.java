@@ -30,6 +30,9 @@ public class Venda {
 	private Long id;
 	
 	@Column(nullable = false)
+	private Long numeronota;
+	
+	@Column(nullable = false)
 	private Long idProduto;
 	
 	@Column(nullable = false)
@@ -50,6 +53,9 @@ public class Venda {
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private StatusVenda status;
+	
+	@Column(nullable = false)
+	private String formaPag;
 	
 	@Column(nullable = false)
 	private OffsetDateTime dataVenda;

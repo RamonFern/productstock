@@ -42,12 +42,14 @@ public class VendaService {
 	@Transactional
 	public Venda update(Long id, Venda venda) {
 		Venda vendaUpdate = findById(id);
+		vendaUpdate.setNumeronota(venda.getNumeronota());
 		vendaUpdate.setIdProduto(venda.getIdProduto());
 		vendaUpdate.setNomeproduto(venda.getNomeproduto());
 		vendaUpdate.setValorunidade(venda.getValorunidade());
 		vendaUpdate.setQuantidade(venda.getQuantidade());
 		vendaUpdate.setDesconto(venda.getDesconto());
 		vendaUpdate.setStatus(venda.getStatus());
+		vendaUpdate.setFormaPag(venda.getFormaPag());
 		vendaUpdate.setTotal(venda.getTotal());
 		return vendaUpdate;
 	}
