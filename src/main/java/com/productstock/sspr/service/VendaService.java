@@ -23,7 +23,7 @@ public class VendaService {
 	
 	@Transactional
 	public Venda criar(Venda venda) {
-		venda.setDataVenda(OffsetDateTime.now());
+		venda.setDatavenda(OffsetDateTime.now());
 		return vendaRepository.save(venda);
 	}
 
@@ -43,13 +43,13 @@ public class VendaService {
 	public Venda update(Long id, Venda venda) {
 		Venda vendaUpdate = findById(id);
 		vendaUpdate.setNumeronota(venda.getNumeronota());
-		vendaUpdate.setIdProduto(venda.getIdProduto());
+		vendaUpdate.setIdproduto(venda.getIdproduto());
 		vendaUpdate.setNomeproduto(venda.getNomeproduto());
 		vendaUpdate.setValorunidade(venda.getValorunidade());
 		vendaUpdate.setQuantidade(venda.getQuantidade());
 		vendaUpdate.setDesconto(venda.getDesconto());
 		vendaUpdate.setStatus(venda.getStatus());
-		vendaUpdate.setFormaPag(venda.getFormaPag());
+		vendaUpdate.setFormapag(venda.getFormapag());
 		vendaUpdate.setTotal(venda.getTotal());
 		return vendaUpdate;
 	}

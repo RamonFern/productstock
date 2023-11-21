@@ -48,8 +48,9 @@ public class ProdutoService {
 		Produto produtoUpdate = findById(id);
 		produtoUpdate.setNome(produto.getNome());
 		produtoUpdate.setMarca(produto.getMarca());
-		produtoUpdate.setQntdEstoque(produto.getQntdEstoque());
+		produtoUpdate.setQntdestoque(produto.getQntdestoque());
 		produtoUpdate.setValor(produto.getValor());
+		produtoUpdate.setValorentrada(produto.getValorentrada());
 		produtoRepository.save(produtoUpdate);
 		return produtoUpdate;
 	}

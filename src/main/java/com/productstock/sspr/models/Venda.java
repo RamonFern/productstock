@@ -33,7 +33,7 @@ public class Venda {
 	private Long numeronota;
 	
 	@Column(nullable = false)
-	private Long idProduto;
+	private Long idproduto;
 	
 	@Column(nullable = false)
 	private String nomeproduto;
@@ -55,10 +55,10 @@ public class Venda {
 	private StatusVenda status;
 	
 	@Column(nullable = false)
-	private String formaPag;
+	private String formapag;
 	
 	@Column(nullable = false)
-	private OffsetDateTime dataVenda;
+	private OffsetDateTime datavenda;
 	
 	
 

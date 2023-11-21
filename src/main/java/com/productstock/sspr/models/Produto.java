@@ -31,10 +31,13 @@ public class Produto {
 	private String marca;
 	
 	@Column(nullable = false)
-	private Integer qntdEstoque;
+	private Integer qntdestoque;
 	
 	@Column(nullable = false)
 	private BigDecimal valor;
+	
+	@Column(nullable = false)
+	private BigDecimal valorentrada;
 		
 	
 

@@ -28,7 +28,7 @@ public class VendaDTO {
 	private Long numeronota;
 	
 	@NotBlank
-	private Long idProduto;
+	private Long idproduto;
 	
 	@NotBlank
 	private String nomeproduto;
@@ -48,9 +48,9 @@ public class VendaDTO {
 	private StatusVenda status;
 	
 	@NotBlank
-	private String formaPag;
+	private String formapag;
 	
 	@NotBlank
-	private OffsetDateTime dataVenda;
+	private OffsetDateTime datavenda;
 
 }

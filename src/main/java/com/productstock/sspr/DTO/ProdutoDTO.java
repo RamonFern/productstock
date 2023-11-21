@@ -27,9 +27,12 @@ public class ProdutoDTO {
 	private String marca;
 	
 	@NotEmpty
-	private Integer qntdEstoque;
+	private Integer qntdestoque;
 	
 	@NotEmpty
 	private BigDecimal valor;
+	
+	@NotEmpty
+	private BigDecimal valorentrada;
 
 }
