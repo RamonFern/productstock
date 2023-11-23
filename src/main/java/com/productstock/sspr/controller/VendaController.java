@@ -1,8 +1,10 @@
 package com.productstock.sspr.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -65,6 +68,17 @@ public class VendaController {
 		Venda vendaParaAtualizar = vendaService.update(id, venda);
 		return ResponseEntity.ok(vendaMapper.toDTO(vendaParaAtualizar));
 	}
+	
+	@GetMapping("/hoje")
+    public List<Venda> getVendasDoDia() {
+        return vendaService.getVendasDoDia();
+    }
+	
+	 @GetMapping("/por-data")
+    public List<Venda> getVendasPorData(@RequestParam("data")
+                                        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data) {
+        return vendaService.getVendasPorData(data);
+    }
 	
 
 }

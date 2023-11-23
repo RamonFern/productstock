@@ -1,5 +1,6 @@
 package com.productstock.sspr.service;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -53,6 +54,20 @@ public class VendaService {
 		vendaUpdate.setTotal(venda.getTotal());
 		return vendaUpdate;
 	}
+	
+	public List<Venda> getVendasDoDia() {
+	    OffsetDateTime startOfDay = OffsetDateTime.now().withHour(0).withMinute(0).withSecond(0).withNano(0);
+	    OffsetDateTime endOfDay = OffsetDateTime.now().withHour(23).withMinute(59).withSecond(59).withNano(999999999);
+	
+	    return vendaRepository.findByDatavendaBetween(startOfDay, endOfDay);
+	}
+	
+	 public List<Venda> getVendasPorData(LocalDate data) {
+        OffsetDateTime startOfDay = data.atStartOfDay().atOffset(OffsetDateTime.now().getOffset());
+        OffsetDateTime endOfDay = startOfDay.plusDays(1).minusNanos(1);
+
+        return vendaRepository.findByDatavendaBetween(startOfDay, endOfDay);
+    }
 	
 	
 }
