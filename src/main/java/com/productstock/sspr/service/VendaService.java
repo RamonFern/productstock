@@ -62,12 +62,18 @@ public class VendaService {
 	    return vendaRepository.findByDatavendaBetween(startOfDay, endOfDay);
 	}
 	
-	 public List<Venda> getVendasPorData(LocalDate data) {
+	public List<Venda> getVendasPorData(LocalDate data) {
         OffsetDateTime startOfDay = data.atStartOfDay().atOffset(OffsetDateTime.now().getOffset());
         OffsetDateTime endOfDay = startOfDay.plusDays(1).minusNanos(1);
 
         return vendaRepository.findByDatavendaBetween(startOfDay, endOfDay);
     }
+	 
+	public Long obterNumeroUltimaNota() {
+        // Use o método do repository para obter a última nota
+        Venda ultimaVenda = vendaRepository.findFirstByOrderByNumeronotaDesc();
+        return (ultimaVenda != null) ? ultimaVenda.getNumeronota() : null;
+	}
 	
 	
 }

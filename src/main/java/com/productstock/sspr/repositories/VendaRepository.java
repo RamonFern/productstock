@@ -11,5 +11,6 @@ public interface VendaRepository extends JpaRepository<Venda, Long>{
 	
 	  List<Venda> findByDatavendaBetween(OffsetDateTime startOfDay, OffsetDateTime endOfDay);
 	  List<Venda> findByDatavenda(OffsetDateTime date);
+	  Venda findFirstByOrderByNumeronotaDesc();
 
 }

@@ -79,6 +79,11 @@ public class VendaController {
                                         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data) {
         return vendaService.getVendasPorData(data);
     }
+	 
+	@GetMapping("/ultimaNota")
+	public Long obterNumeroUltimaNota() {
+	    return vendaService.obterNumeroUltimaNota();
+	}
 	
 
 }
